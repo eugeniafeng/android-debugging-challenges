@@ -46,7 +46,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return movies.size();
     }
 
     @NonNull
@@ -59,8 +59,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         View movieView = inflater.inflate(R.layout.item_movie, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(movieView);
-        return viewHolder;
+        return new ViewHolder(movieView);
     }
 
     @Override
@@ -74,8 +73,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         Resources resources = viewHolder.tvName.getResources();
         double movieRating = movie.getRating();
 
-        if (movieRating > 6) {
+        if (movieRating > 7) {
             viewHolder.view.setBackgroundColor(Color.GREEN);
+        } else {
+            viewHolder.view.setBackgroundColor(Color.WHITE);
         }
 
         String ratingText = String.format(resources.getString(R.string.rating), movieRating);
